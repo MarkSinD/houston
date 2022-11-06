@@ -1,0 +1,29 @@
+.desktop-wrapper {
+    background-size: cover;
+    background: transparent url('../assets/images/main-background.png') no-repeat center;
+    height: 856px;
+    width: 1440px;
+}
+
+.progress {
+    background: #000000 0% 0% no-repeat padding-box;
+    opacity: 0.8;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 8px;
+    border-radius: 30px;
+}
+
+.progressValue {
+    animation: load 5s normal forwards;
+    box-shadow: 0px 0px 12px 0px #ff0000;
+    border: 0.125rem solid #ffdd00;
+    border-radius: 30px;
+    opacity: 1;
+    background: #ffdd00;
+    height: 0.188rem;
+    width: 0;
+}
