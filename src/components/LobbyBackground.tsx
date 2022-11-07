@@ -1,10 +1,13 @@
 import {FC} from "react";
+import logo from '../assets/images/logo.png';
 
-const LobbyBackground: FC = () => {
+export const HoustonLogo: FC = () => {
     return (
-        <div id='main-game'>
-        </div>
+        <>
+            <img
+                src={logo}
+                alt='HeyHouston Logo'
+            />
+        </>
     );
 };
-
-export default LobbyBackground;

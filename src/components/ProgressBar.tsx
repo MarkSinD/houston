@@ -18,7 +18,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({
 
     const progressBar = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        progressBar.current?.addEventListener('animationend', onEnd);
+        progressBar.current?.addEventListener('transitionend', onEnd);
     }, [onEnd]);
 
     return (
