@@ -11,8 +11,9 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({ isAction= false }) => 
     const styles = useSpring({
         from: {transform: "translateY(0px)"},
         //to: [{transform: "translateY(0px}"}],
-        to: [{transform: `${'translateY(' + (isAction ? '-700px' : '0px') + ')'}`}],
-        config: {mass: 4, duration: 1000}
+        to: [{transform: `${'translateY(' + (isAction ? '50px' : '0px') + ')'}`},
+            {transform: `${'translateY(' + (isAction ? '-700px' : '0px') + ')'}`}],
+        config: {mass: 6, duration: 1000}
     })
 
     return (

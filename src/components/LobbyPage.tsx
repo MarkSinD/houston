@@ -14,14 +14,14 @@ const LobbyPage = () => {
                     <div style={{textAlign: 'center', marginTop: '5%'}}>
                         <HoustonLogo/>
                     </div>
-                    <div style={{marginTop: '5%'}}>
+                    <div style={{marginTop: '5%', zIndex: 2}}>
                         <RocketAnimated
                             isAction={isRocketAction}
                         />
                     </div>
-                    <div style={{width: '40%', zIndex: 2, marginTop:'10%'}}>
+                    <div style={{width: '40%', zIndex: 3, marginTop:'10%'}}>
                         <ProgressBar
-                            animationTime={5}
+                            animationTime={3}
                             onEnd={() => {
                                 setIsRocketAction(true);
                             }}
