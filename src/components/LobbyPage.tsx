@@ -11,15 +11,15 @@ const LobbyPage = () => {
         <>
             <div >
                 <div className='desktop-wrapper'>
-                    <div style={{textAlign: 'center', marginTop: '5%'}}>
+                    <div className='logo-main'>
                         <HoustonLogo/>
                     </div>
-                    <div style={{marginTop: '5%', zIndex: 2}}>
+                    <div className='rocket-lobby-wrap'>
                         <RocketAnimated
                             isAction={isRocketAction}
                         />
                     </div>
-                    <div style={{width: '40%', zIndex: 3, marginTop:'10%'}}>
+                    <div className='progress-lobby-wrapper'>
                         <ProgressBar
                             animationTime={3}
                             onEnd={() => {
