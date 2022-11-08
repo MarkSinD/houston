@@ -1,4 +1,5 @@
 import React, {FC, useEffect, useRef, useState} from "react";
+import classes from './ProgressBar.module.scss';
 
 export interface ProgressBarProps {
     isLoading?: boolean;
@@ -24,9 +25,9 @@ export const ProgressBar: FC<ProgressBarProps> = ({
     }, [onEnd]);
 
     return (
-        <div className='progress'>
+        <div className={classes.progress}>
             <div
-                className='progressValue'
+                className={classes.progressValue}
                 style={{
                     transition: `width ${animationTime}s ease 0s`,
                     width: `${value}%`,

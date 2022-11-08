@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import LobbyPage from "./components/LobbyPage";
+import LobbyPage from "./layouts/LobbyPage";
 import './styles/global.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

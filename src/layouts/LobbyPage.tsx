@@ -1,7 +1,7 @@
-import {FC, useEffect, useState} from 'react';
-import {ProgressBar} from "./ProgressBar";
-import {HoustonLogo} from "./LobbyBackground";
-import {RocketAnimated} from "./RocketAnimated";
+import {useState} from 'react';
+import {ProgressBar} from "../components/ProgressBar/ProgressBar";
+import {HoustonLogo} from "../components/HoustonLogo/HoustonLogo";
+import {RocketAnimated} from "../components/RocketAnimated/RocketAnimated";
 
 const LobbyPage = () => {
 

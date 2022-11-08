@@ -1,6 +1,7 @@
 import {FC} from "react";
-import rocket from "../assets/images/rocket.png";
+import rocket from "../../assets/images/rocket.png";
 import { useSpring, animated } from 'react-spring'
+import classes from './RocketAnimated.module.scss';
 
 export interface RocketAnimatedProps {
     isAction?: boolean;
@@ -21,7 +22,7 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
     })
 
     return (
-        <animated.div className='rocket-main' style={{...styles}}>
+        <animated.div className={classes.rocketMain} style={{...styles}}>
             <img
                 src={rocket}
                 alt='HeyHouston Rocket'

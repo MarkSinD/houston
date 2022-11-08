@@ -43,35 +43,9 @@
     margin-bottom: 7%;
 }
 
-.progress {
-    background: none !important;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    height: 10px !important;
-    border: 1px solid #08d3ff;
-    border-radius: 0 !important;
-    box-shadow: 0 0 6px 1px rgb(8 211 255);
-}
-
-.progressValue {
-    animation: load 5s normal forwards;
-    box-shadow: 0 0 1px 0 #266d86;
-    opacity: 1;
-    background: #08d3ff;
-    height: 7px;
-}
-
 .rocket-lobby-wrap {
     height: 35% !important;
     margin-top: 5%;
     z-index: 2;
     cursor: pointer;
-}
-
-.rocket-main, .rocket-main img {
-    filter: drop-shadow(1px 1px 6px #08d3ff);
-    height: 100%;
-    width:auto;
 }
