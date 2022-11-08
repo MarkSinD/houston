@@ -1,11 +1,13 @@
 import React, {FC, useEffect, useRef, useState} from "react";
 
 export interface ProgressBarProps {
+    isLoading?: boolean;
     onEnd?: () => void;
     animationTime?: number;
 }
 
 export const ProgressBar: FC<ProgressBarProps> = ({
+  isLoading = false,
   animationTime = 5,
   onEnd = () => {}
 }) => {
@@ -13,8 +15,8 @@ export const ProgressBar: FC<ProgressBarProps> = ({
     const [value, setValue] = useState(0);
 
     useEffect(() => {
-        setValue(100);
-    }, []);
+        if (isLoading) setValue(100);
+    }, [isLoading]);
 
     const progressBar = useRef<HTMLDivElement>(null);
     useEffect(() => {

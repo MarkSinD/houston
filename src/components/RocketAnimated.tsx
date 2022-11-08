@@ -4,9 +4,13 @@ import { useSpring, animated } from 'react-spring'
 
 export interface RocketAnimatedProps {
     isAction?: boolean;
+    handleClick?: () => void;
 }
 
-export const RocketAnimated: FC<RocketAnimatedProps> = ({ isAction= false }) => {
+export const RocketAnimated: FC<RocketAnimatedProps> = ({
+  isAction= false,
+  handleClick = () => {}
+}) => {
 
     const styles = useSpring({
         from: {transform: "translateY(0px)"},
@@ -21,6 +25,7 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({ isAction= false }) => 
             <img
                 src={rocket}
                 alt='HeyHouston Rocket'
+                onClick={handleClick}
             />
         </animated.div>
     );

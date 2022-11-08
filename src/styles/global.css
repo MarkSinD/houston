@@ -67,6 +67,7 @@
     height: 35% !important;
     margin-top: 5%;
     z-index: 2;
+    cursor: pointer;
 }
 
 .rocket-main, .rocket-main img {

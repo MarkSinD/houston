@@ -6,6 +6,11 @@ import {RocketAnimated} from "./RocketAnimated";
 const LobbyPage = () => {
 
     const [isRocketAction, setIsRocketAction] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleRocketClick = () => {
+        setIsLoading(true);
+    };
 
     return (
         <>
@@ -17,10 +22,14 @@ const LobbyPage = () => {
                     <div className='rocket-lobby-wrap'>
                         <RocketAnimated
                             isAction={isRocketAction}
+                            handleClick={() => {
+                                handleRocketClick()
+                            }}
                         />
                     </div>
                     <div className='progress-lobby-wrapper'>
                         <ProgressBar
+                            isLoading={isLoading}
                             animationTime={3}
                             onEnd={() => {
                                 setIsRocketAction(true);
