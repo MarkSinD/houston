@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {ProgressBar} from "../components/ProgressBar/ProgressBar";
 import {HoustonLogo} from "../components/HoustonLogo/HoustonLogo";
 import {RocketAnimated} from "../components/RocketAnimated/RocketAnimated";
+import {ApplicationBackground} from "../components/ApplicationBackground/ApplicationBackground";
 
 const LobbyPage = () => {
 
@@ -14,11 +15,7 @@ const LobbyPage = () => {
 
     return (
         <>
-            <div >
-                <div className='desktop-wrapper'>
-                    <div className='logo-main'>
-                        <HoustonLogo/>
-                    </div>
+            <ApplicationBackground>
                     <div className='rocket-lobby-wrap'>
                         <RocketAnimated
                             isAction={isRocketAction}
@@ -36,9 +33,7 @@ const LobbyPage = () => {
                             }}
                         />
                     </div>
-                </div>
-                <div className='earth-footer '/>
-            </div>
+            </ApplicationBackground>
         </>
     );
 };

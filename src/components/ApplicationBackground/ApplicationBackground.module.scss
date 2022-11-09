@@ -1,0 +1,34 @@
+.desktopWrapper {
+    background-size: cover;
+    background: transparent url('/assets/images/main-background.png') no-repeat center;
+    background-size: cover;
+    max-height: 966px;
+    max-width: 1915px;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoMain {
+    text-align: center;
+    margin-top: 5%;
+    height: 15%;
+}
+
+.logoMain img {
+    width: auto;
+    height: 100%;
+}
+
+.earthFooter {
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    background: transparent url('/assets/images/earth-footer.png') no-repeat bottom;
+    position: fixed;
+    z-index: 1;
+}
