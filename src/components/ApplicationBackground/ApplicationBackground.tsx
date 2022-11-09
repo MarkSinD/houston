@@ -1,5 +1,5 @@
 import {HoustonLogo} from "../HoustonLogo/HoustonLogo";
-import { DetailedHTMLProps, FC, HTMLAttributes, useEffect } from 'react';
+import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 import { CSSProperties } from '@material-ui/styles';
 import classes from './ApplicationBackground.module.scss';
 

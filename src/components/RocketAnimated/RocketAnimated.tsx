@@ -6,11 +6,13 @@ import classes from './RocketAnimated.module.scss';
 export interface RocketAnimatedProps {
     isAction?: boolean;
     handleClick?: () => void;
+    onAnimationEnd?: () => void;
 }
 
 export const RocketAnimated: FC<RocketAnimatedProps> = ({
   isAction= false,
-  handleClick = () => {}
+  handleClick = () => {},
+  onAnimationEnd = () => {}
 }) => {
 
     const styles = useSpring({
@@ -18,7 +20,8 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
         //to: [{transform: "translateY(0px}"}],
         to: [{transform: `${'translateY(' + (isAction ? '50px' : '0px') + ')'}`},
             {transform: `${'translateY(' + (isAction ? '-700px' : '0px') + ')'}`}],
-        config: {mass: 6, duration: 1000}
+        config: {mass: 6, duration: 1000},
+        onRest: () => { onAnimationEnd() }
     })
 
     return (
