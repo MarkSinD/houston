@@ -21,7 +21,7 @@ const LobbyPage = () => {
 
     return (
         <>
-            <ApplicationBackground>
+            <ApplicationBackground isLobby={true}>
                     <div className='rocket-lobby-wrap'>
                         <RocketAnimated
                             isAction={isRocketAction}

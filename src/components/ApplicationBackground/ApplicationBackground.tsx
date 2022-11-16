@@ -6,21 +6,25 @@ import classes from './ApplicationBackground.module.scss';
 export interface ApplicationBackgroundProps {
     className?: string;
     styles?: CSSProperties;
+    isLobby?: boolean;
 }
 
 export const ApplicationBackground: FC<
  ApplicationBackgroundProps &
  DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,HTMLDivElement
  >
-> = ({ children, className = '', styles = {}, ...props }) => {
+> = ({ children, className = '', styles = {}, isLobby = false, ...props }) => {
 
     return (
         <>
             <div >
                 <div className={classes.desktopWrapper}>
-                    <div className={classes.logoMain}>
-                        <HoustonLogo/>
-                    </div>
+                    { isLobby ? (
+                            <div className={classes.logoMain}>
+                                <HoustonLogo/>
+                            </div>
+                        ) : null
+                    }
                     {children}
                 </div>
                 <div className={classes.earthFooter}/>
