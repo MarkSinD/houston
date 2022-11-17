@@ -1,7 +1,19 @@
 @use 'src/styles/vars';
 
+.rocketContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .rocketMain, .rocketMain img {
   filter: drop-shadow(1px 1px 6px vars.$neonBlue);
+  height: 100%;
+  width:auto;
+}
+
+.startExplosion {
   height: 100%;
   width:auto;
 }
