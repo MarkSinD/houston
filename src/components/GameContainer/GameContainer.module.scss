@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .rocketGame {
   height: 20%;
   z-index: 2;
@@ -11,7 +13,7 @@
 
 .roundTimer span {
   font: 72px sans-serif;
-  color: #08d3ff;
+  color: vars.$neonBlue;
 }
 
 .playablePanelContainer {

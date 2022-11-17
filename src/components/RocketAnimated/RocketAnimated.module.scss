@@ -1,5 +1,7 @@
+@use 'src/styles/vars';
+
 .rocketMain, .rocketMain img {
-  filter: drop-shadow(1px 1px 6px #08d3ff);
+  filter: drop-shadow(1px 1px 6px vars.$neonBlue);
   height: 100%;
   width:auto;
 }
