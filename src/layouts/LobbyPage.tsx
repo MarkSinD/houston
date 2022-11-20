@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import {ProgressBar} from "../components/ProgressBar/ProgressBar";
 import {RocketAnimated} from "../components/RocketAnimated/RocketAnimated";
 import {ApplicationBackground} from "../components/ApplicationBackground/ApplicationBackground";
@@ -19,10 +19,12 @@ const LobbyPage = () => {
         navigate('/game');
     };
 
+    const appDiv = useRef<HTMLDivElement>(null);
+
     return (
         <>
             <ApplicationBackground isLobby={true}>
-                    <div className='rocket-lobby-wrap'>
+                    <div className='rocket-lobby-wrap' ref={appDiv}>
                         <RocketAnimated
                             isAction={isRocketAction}
                             handleClick={() => {
@@ -32,6 +34,7 @@ const LobbyPage = () => {
                                 onAnimationEnd()
                             }}
                             isLobby={true}
+                            applicationHeight={appDiv?.current?.clientHeight ? appDiv?.current?.clientHeight / 0.35 : 0}
                         />
                     </div>
                     <div className='progress-lobby-wrapper'>

@@ -33,7 +33,7 @@ const GamePage = () => {
                         <div className='game-left-column'>
 
                         </div>
-                        <div className='game-playable-container'>
+                        <div className='game-playable-container-wrapper'>
                             <GameContainer
                                 moveBackgroundOnRocketLaunched={(isMoving: boolean) => {
                                     moveBackgroundOnRocketLaunched(isMoving)

@@ -19,7 +19,7 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
   handleClick = () => {},
   onAnimationEnd = () => {},
   isLobby = false,
-  applicationHeight= 1915,
+  applicationHeight= 0,
   isRocketExplosion = false
 }) => {
 
