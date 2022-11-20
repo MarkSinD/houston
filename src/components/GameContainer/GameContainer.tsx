@@ -1,9 +1,17 @@
-import {RocketAnimated} from "../RocketAnimated/RocketAnimated";
-import {useState} from "react";
+import {RocketAnimated, RocketAnimatedProps} from "../RocketAnimated/RocketAnimated";
+import {FC, useState} from "react";
 import classes from './GameContainer.module.scss';
+import startButton from "../../assets/images/start-button.png";
 
-const GameContainer = () => {
+export interface GameContainerProps {
+    moveBackgroundOnRocketLaunched?: () => void;
+}
+
+const GameContainer : FC<GameContainerProps> = ({
+  moveBackgroundOnRocketLaunched = () => {},
+}) => {
     const [isRocketAction, setIsRocketAction] = useState(false);
+
     const onAnimationEnd = () => {
         if (!isRocketAction) return;
     };
@@ -20,11 +28,20 @@ const GameContainer = () => {
                     onAnimationEnd={() => {
                         onAnimationEnd()
                     }}
+                    // todo сколько секунд будет лететь ракета:
+                    durationSeconds={5}
                 />
             </div>
 
             <div className={classes.playablePanelContainer}>
                 {/* todo игровая панелька, сетнуть тут setIsRocketAction */}
+                <img
+                    src={startButton}
+                    onClick={() => {
+                        setIsRocketAction(true)
+                        moveBackgroundOnRocketLaunched()
+                    }}
+                />
             </div>
         </>
     );

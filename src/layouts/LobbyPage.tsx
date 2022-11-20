@@ -31,6 +31,7 @@ const LobbyPage = () => {
                             onAnimationEnd={() => {
                                 onAnimationEnd()
                             }}
+                            isLobby={true}
                         />
                     </div>
                     <div className='progress-lobby-wrapper'>

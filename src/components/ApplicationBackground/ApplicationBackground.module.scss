@@ -1,9 +1,6 @@
 .desktopWrapper {
+    background: transparent url('/assets/images/main-background-cycle.png') repeat-y center;
     background-size: cover;
-    background: transparent url('/assets/images/main-background.png') no-repeat center;
-    background-size: cover;
-    max-height: 966px;
-    max-width: 1915px;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -11,6 +8,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-position-y: 0;
+}
+
+.gameActionWrapper {
+    background: transparent url('/assets/images/main-background-cycle.png') repeat-y center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideDown 5s infinite linear;
+}
+
+@keyframes slideDown {
+    0% { background-position-y: 0; }
+    100% { background-position-y: 1915px; }
 }
 
 .logoMain {
@@ -25,10 +41,26 @@
 }
 
 .earthFooter {
+    height: 100%;
+    width: 100%;
+    background: transparent url('/assets/images/earth-footer.png') no-repeat bottom;
+    background-size: contain;
+    position: fixed;
+    z-index: 1;
+}
+
+.gameActionEarthFooter {
     max-width: 100%;
     height: 100%;
     width: 100%;
     background: transparent url('/assets/images/earth-footer.png') no-repeat bottom;
+    background-size: contain;
     position: fixed;
     z-index: 1;
+    animation: slideFooterDown 3s forwards;
+}
+
+@keyframes slideFooterDown {
+    0% { background-position-y: bottom; }
+    100% { background-position-y: 200%; }
 }

@@ -7,18 +7,19 @@ export interface ApplicationBackgroundProps {
     className?: string;
     styles?: CSSProperties;
     isLobby?: boolean;
+    isRocketLaunched?: boolean;
 }
 
 export const ApplicationBackground: FC<
  ApplicationBackgroundProps &
  DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,HTMLDivElement
  >
-> = ({ children, className = '', styles = {}, isLobby = false, ...props }) => {
+> = ({ children, className = '', styles = {}, isLobby = false, isRocketLaunched = false, ...props }) => {
 
     return (
         <>
             <div >
-                <div className={classes.desktopWrapper}>
+                <div className={isRocketLaunched && !isLobby ? classes.gameActionWrapper : classes.desktopWrapper}>
                     { isLobby ? (
                             <div className={classes.logoMain}>
                                 <HoustonLogo/>
@@ -27,7 +28,7 @@ export const ApplicationBackground: FC<
                     }
                     {children}
                 </div>
-                <div className={classes.earthFooter}/>
+                <div className={isRocketLaunched && !isLobby ? classes.gameActionEarthFooter : classes.earthFooter}/>
             </div>
         </>
     );

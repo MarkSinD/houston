@@ -2,11 +2,21 @@ import {ApplicationBackground} from "../components/ApplicationBackground/Applica
 import {GameSettings} from "../components/GameSettings/GameSettings";
 import {BetRoofTiles} from "../components/BetRoofTiles/BetRoofTiles";
 import GameContainer from "../components/GameContainer/GameContainer";
+import {useState} from "react";
 
 const GamePage = () => {
+    const [isRocketLaunched, setIsRocketLaunched] = useState(false);
+
+    const moveBackgroundOnRocketLaunched = () => {
+        if (isRocketLaunched) return;
+        setIsRocketLaunched(true);
+    };
+
     return(
         <>
-            <ApplicationBackground>
+            <ApplicationBackground
+                isRocketLaunched={isRocketLaunched}
+            >
                 <div className='game-wrapper'>
 
                     <div className='game-roof-row'>
@@ -23,7 +33,11 @@ const GamePage = () => {
 
                         </div>
                         <div className='game-playable-container'>
-                            <GameContainer/>
+                            <GameContainer
+                                moveBackgroundOnRocketLaunched={() => {
+                                    moveBackgroundOnRocketLaunched()
+                                }}
+                            />
                         </div>
                         <div className='game-right-column'>
 
