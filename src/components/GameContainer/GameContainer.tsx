@@ -4,7 +4,7 @@ import classes from './GameContainer.module.scss';
 import startButton from "../../assets/images/start-button.png";
 
 export interface GameContainerProps {
-    moveBackgroundOnRocketLaunched?: () => void;
+    moveBackgroundOnRocketLaunched?: (isMoving: boolean) => void;
     applicationHeight?: number;
 }
 
@@ -13,15 +13,36 @@ const GameContainer : FC<GameContainerProps> = ({
   applicationHeight = 1915
 }) => {
     const [isRocketAction, setIsRocketAction] = useState(false);
+    const [countdown, setCountdown] = useState(-1);
+    const [isRocketExplosion, setIsRocketExplosion] = useState(false);
 
-    const onAnimationEnd = () => {
-        if (!isRocketAction) return;
+    const handleStartRound = () => {
+        const countDownStart = 3;
+        for (let i = 0; i <= countDownStart; i++) {
+            setTimeout(() => {
+                setCountdown(countDownStart-i);
+                if (i === countDownStart) {
+                    setIsRocketAction(true);
+                    moveBackgroundOnRocketLaunched(true);
+                    setTimeout(() => {setCountdown(-1) }, 1000);
+                }
+             }, 1000 * (i + 1));
+        }
     };
+
+    const handleRocketFlightDuration = () => {
+        if (!isRocketAction) return;
+        // todo сколько секунд будет лететь ракета:
+        const durationSeconds = 5;
+        setTimeout(() => {
+            setIsRocketExplosion(true);
+        }, durationSeconds * 1000)
+    }
 
     return(
         <>
             <div className={classes.roundTimer}>
-                <span>{3}</span>
+                <span style={{opacity: countdown === -1 ? 0 : 1}}>{ countdown === 0 ? 'Go!' : countdown }</span>
             </div>
 
             <div className={classes.rocketGame}>
@@ -29,20 +50,17 @@ const GameContainer : FC<GameContainerProps> = ({
                     applicationHeight={applicationHeight}
                     isAction={isRocketAction}
                     onAnimationEnd={() => {
-                        onAnimationEnd()
+                        handleRocketFlightDuration()
                     }}
-                    // todo сколько секунд будет лететь ракета:
-                    durationSeconds={5}
+                    isRocketExplosion={isRocketExplosion}
                 />
             </div>
 
             <div className={classes.playablePanelContainer}>
-                {/* todo игровая панелька, сетнуть тут setIsRocketAction */}
                 <img
                     src={startButton}
                     onClick={() => {
-                        setIsRocketAction(true)
-                        moveBackgroundOnRocketLaunched()
+                        handleStartRound();
                     }}
                 />
             </div>

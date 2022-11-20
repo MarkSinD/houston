@@ -17,3 +17,10 @@
   height: 100%;
   width:auto;
 }
+
+.endExplosion {
+  height: 100%;
+  z-index: 5;
+  position: fixed;
+  top: 20%;
+}

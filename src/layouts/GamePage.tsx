@@ -7,9 +7,8 @@ import {useRef, useState} from "react";
 const GamePage = () => {
     const [isRocketLaunched, setIsRocketLaunched] = useState(false);
 
-    const moveBackgroundOnRocketLaunched = () => {
-        if (isRocketLaunched) return;
-        setIsRocketLaunched(true);
+    const moveBackgroundOnRocketLaunched = (isMoving: boolean) => {
+        setIsRocketLaunched(isMoving);
     };
 
     const appDiv = useRef<HTMLDivElement>(null);
@@ -36,8 +35,8 @@ const GamePage = () => {
                         </div>
                         <div className='game-playable-container'>
                             <GameContainer
-                                moveBackgroundOnRocketLaunched={() => {
-                                    moveBackgroundOnRocketLaunched()
+                                moveBackgroundOnRocketLaunched={(isMoving: boolean) => {
+                                    moveBackgroundOnRocketLaunched(isMoving)
                                 }}
                                 applicationHeight={appDiv?.current?.clientHeight}
                             />
