@@ -5,10 +5,12 @@ import startButton from "../../assets/images/start-button.png";
 
 export interface GameContainerProps {
     moveBackgroundOnRocketLaunched?: () => void;
+    applicationHeight?: number;
 }
 
 const GameContainer : FC<GameContainerProps> = ({
   moveBackgroundOnRocketLaunched = () => {},
+  applicationHeight = 1915
 }) => {
     const [isRocketAction, setIsRocketAction] = useState(false);
 
@@ -24,6 +26,7 @@ const GameContainer : FC<GameContainerProps> = ({
 
             <div className={classes.rocketGame}>
                 <RocketAnimated
+                    applicationHeight={applicationHeight}
                     isAction={isRocketAction}
                     onAnimationEnd={() => {
                         onAnimationEnd()

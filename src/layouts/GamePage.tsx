@@ -2,7 +2,7 @@ import {ApplicationBackground} from "../components/ApplicationBackground/Applica
 import {GameSettings} from "../components/GameSettings/GameSettings";
 import {BetRoofTiles} from "../components/BetRoofTiles/BetRoofTiles";
 import GameContainer from "../components/GameContainer/GameContainer";
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 const GamePage = () => {
     const [isRocketLaunched, setIsRocketLaunched] = useState(false);
@@ -12,12 +12,14 @@ const GamePage = () => {
         setIsRocketLaunched(true);
     };
 
+    const appDiv = useRef<HTMLDivElement>(null);
+
     return(
         <>
             <ApplicationBackground
                 isRocketLaunched={isRocketLaunched}
             >
-                <div className='game-wrapper'>
+                <div className='game-wrapper' ref={appDiv}>
 
                     <div className='game-roof-row'>
                         <div className='game-settings'>
@@ -37,6 +39,7 @@ const GamePage = () => {
                                 moveBackgroundOnRocketLaunched={() => {
                                     moveBackgroundOnRocketLaunched()
                                 }}
+                                applicationHeight={appDiv?.current?.clientHeight}
                             />
                         </div>
                         <div className='game-right-column'>
