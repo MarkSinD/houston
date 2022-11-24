@@ -13,7 +13,6 @@ const BetCoefficientScale : FC<BetCoefficientScaleProps> = ({
   applicationHeight= 0,
 }) => {
     const maxHeight = 0.7*applicationHeight;
-    console.log(`${'translateY(' + (isAction ? '-' + maxHeight + 'px' : '0px') + ')'}`);
 
     const scaleStyles = useSpring({
         from: {transform:  "translateY('0px')"},

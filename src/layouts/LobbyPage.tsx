@@ -23,7 +23,10 @@ const LobbyPage = () => {
 
     return (
         <>
-            <ApplicationBackground isLobby={true}>
+            <ApplicationBackground
+                isLobby={true}
+                applicationHeight={appDiv?.current?.clientHeight}
+            >
                     <div className='rocket-lobby-wrap' ref={appDiv}>
                         <RocketAnimated
                             isAction={isRocketAction}

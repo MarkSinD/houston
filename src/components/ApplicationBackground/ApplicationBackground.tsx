@@ -1,5 +1,5 @@
 import {HoustonLogo} from "../HoustonLogo/HoustonLogo";
-import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
+import {DetailedHTMLProps, FC, HTMLAttributes, useEffect} from 'react';
 import { CSSProperties } from '@material-ui/styles';
 import classes from './ApplicationBackground.module.scss';
 
@@ -8,13 +8,24 @@ export interface ApplicationBackgroundProps {
     styles?: CSSProperties;
     isLobby?: boolean;
     isRocketLaunched?: boolean;
+    applicationHeight?: number;
 }
 
 export const ApplicationBackground: FC<
  ApplicationBackgroundProps &
  DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,HTMLDivElement
  >
-> = ({ children, className = '', styles = {}, isLobby = false, isRocketLaunched = false, ...props }) => {
+> = ({ children, className = '', styles = {}, isLobby = false, isRocketLaunched = false, applicationHeight = 0, ...props }) => {
+
+    const bgHeight = 6808;
+    useEffect(() => {
+        const root = document.documentElement;
+        root?.style.setProperty("--win-height", applicationHeight + "px");
+        root?.style.setProperty(
+            "--slidedown-bg-height",
+            (bgHeight + applicationHeight) + "px"
+        );
+    },);
 
     return (
         <>

@@ -17,6 +17,7 @@ const GamePage = () => {
         <>
             <ApplicationBackground
                 isRocketLaunched={isRocketLaunched}
+                applicationHeight={appDiv?.current?.clientHeight}
             >
                 <div className='game-wrapper' ref={appDiv}>
 
