@@ -17,20 +17,21 @@ export const ApplicationBackground: FC<
  >
 > = ({ children, className = '', styles = {}, isLobby = false, isRocketLaunched = false, applicationHeight = 0, ...props }) => {
 
-    const bgHeight = 6808;
     useEffect(() => {
         const root = document.documentElement;
+        const bgHeight = 6808;
+        const bgWidth = 1915;
+        const heightProportioned = root?.offsetWidth * bgHeight/bgWidth;
         root?.style.setProperty("--win-height", applicationHeight + "px");
         root?.style.setProperty(
-            "--slidedown-bg-height",
-            (bgHeight + applicationHeight) + "px"
+            "--slidedown-bg-height", (heightProportioned + applicationHeight) + "px"
         );
     },);
 
     return (
         <>
             <div >
-                <div className={isRocketLaunched && !isLobby ? classes.gameActionWrapper : classes.desktopWrapper}>
+                <div className={isRocketLaunched && !isLobby ? classes.desktopWrapper + ' ' + classes.gameActionWrapper : classes.desktopWrapper}>
                     { isLobby ? (
                             <div className={classes.logoMain}>
                                 <HoustonLogo/>

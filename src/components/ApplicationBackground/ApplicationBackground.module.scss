@@ -3,7 +3,6 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -12,15 +11,6 @@
 }
 
 .gameActionWrapper {
-    background: transparent url('/assets/images/main-background-cycle.png') repeat-y center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     animation: slideDown 10s infinite linear;
 }
 
