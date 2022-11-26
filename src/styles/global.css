@@ -28,15 +28,18 @@
     width: 100%;
     height: 20%;
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    align-items: baseline;
+    margin-top: 1%;
 }
 
 .game-settings {
-    width: 20%;
+    width: 15%;
+    margin-left: 5%;
 }
 
 .game-roof-tiles {
-    width: 60%;
+    width: 80%;
 }
 
 .game-middle-row {

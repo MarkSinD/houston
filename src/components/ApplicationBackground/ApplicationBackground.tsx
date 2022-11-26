@@ -31,16 +31,21 @@ export const ApplicationBackground: FC<
     return (
         <>
             <div >
-                <div className={isRocketLaunched && !isLobby ? classes.desktopWrapper + ' ' + classes.gameActionWrapper : classes.desktopWrapper}>
-                    { isLobby ? (
-                            <div className={classes.logoMain}>
-                                <HoustonLogo/>
-                            </div>
-                        ) : null
-                    }
+                { isLobby ? (
+                <div className={classes.desktopWrapper}>
+                    <div className={classes.logoMain}>
+                        <HoustonLogo/>
+                    </div>
                     {children}
                 </div>
-                <div className={isRocketLaunched && !isLobby ? classes.gameActionEarthFooter : classes.earthFooter}/>
+                ) : (
+                    <>
+                        <div className={isRocketLaunched ? classes.desktopWrapper + ' ' + classes.gameActionWrapper : classes.desktopWrapper}>
+                            {children}
+                        </div>
+                        <div className={isRocketLaunched ? classes.gameActionEarthFooter : classes.earthFooter}/>
+                    </>
+                )}
             </div>
         </>
     );

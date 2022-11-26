@@ -22,11 +22,11 @@ const GamePage = () => {
                 <div className='game-wrapper' ref={appDiv}>
 
                     <div className='game-roof-row'>
-                        <div className='game-settings'>
-                            <GameSettings/>
-                        </div>
                         <div className='game-roof-tiles'>
                             <BetRoofTiles/>
+                        </div>
+                        <div className='game-settings'>
+                            <GameSettings/>
                         </div>
                     </div>
 
