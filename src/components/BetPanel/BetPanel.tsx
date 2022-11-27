@@ -56,7 +56,7 @@ const BetPanel : FC<BetPanelProps> = ({
                 <span>max</span>
             </div>
 
-            <div className={classes.betCheckBoxesSingleMode}>
+            <div className={isSingleBetMode ? classes.betCheckBoxesSingleMode : classes.betCheckBoxesNonSingleMode}>
                 <div className={classes.betCheckBox}>
                     <span>auto-bet</span>
                     <div className={classes.autoBetCheckBoxImg}>
@@ -73,7 +73,9 @@ const BetPanel : FC<BetPanelProps> = ({
                     </label>
                 </div>
 
-                <div className={classes.verticalLine}/>
+                { isSingleBetMode ? (
+                    <div className={classes.verticalLine}/>
+                ) : null}
 
                 <div className={classes.betCheckBox}>
                     <span>auto-cashout</span>

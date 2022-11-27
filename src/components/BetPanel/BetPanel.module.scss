@@ -24,6 +24,11 @@
   color: white;
 }
 
+.nonSingleBetMode .betBarContainer span {
+  font: 70% vars.$fontName;
+  color: white;
+}
+
 .betBar {
   width: 90%;
   height: 10px !important;
@@ -38,6 +43,7 @@
 
 .selectedAutoBetTile {
   width: 9%; //should be 10% of betBar width percentage
+  height: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,6 +54,10 @@
   font: 100% vars.$fontName;
   color: vars.$neonBlue;
   position: absolute;
+}
+
+.selectedAutoBetTile > img {
+  height: 90%;
 }
 
 .betCheckBoxesSingleMode {
@@ -63,21 +73,36 @@
   height: 100%;
 }
 
+.betCheckBoxesNonSingleMode {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1%;
+}
+
+.betCheckBoxesNonSingleMode > div {
+  width: 100%;
+  height: 100%;
+}
+
 .betCheckBox {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 
-.betCheckBox span {
+.betCheckBox > span {
   font: 100% vars.$fontName;
   color: white;
+  width: 30%;
 }
 
 .betCheckBox img {
   width: 100%;
   height: fit-content;
+  margin-left: 5%;
 }
 
 .autoBetCheckBoxImg {
@@ -85,6 +110,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 5%;
+}
+
+.autoBetCheckBoxImg img {
+  width: 70%;
 }
 
 .autoBetCheckBoxImg span {
@@ -104,6 +134,11 @@
   cursor: pointer;
   text-align: center;
   transition: all 0.4s ease-in-out;
+  margin-left: 5%;
+}
+
+.betCheckBoxesNonSingleMode .autoBetToggle {
+  width: 15%;
 }
 
 .autoBetToggle input {
@@ -179,4 +214,5 @@
   border-left: 2px solid vars.$neonBlue;
   height: 100% !important;
   width: 2px !important;
+  padding: 1%;
 }
