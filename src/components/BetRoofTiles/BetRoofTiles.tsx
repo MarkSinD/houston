@@ -18,7 +18,7 @@ export const BetRoofTiles: FC = () => {
                 {number}
             </span>
         </div>
-);
+    );
 
     return (
         <>

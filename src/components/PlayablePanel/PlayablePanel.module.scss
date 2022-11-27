@@ -1,0 +1,78 @@
+@use 'src/styles/vars';
+
+.playablePanelContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
+.playablePanelContainer img {
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 15px black);
+}
+
+.playablePanelContainer img:hover {
+  filter: drop-shadow(1px 1px 6px vars.$neonBlue);
+}
+
+.buttonDisabled img {
+  cursor: default;
+}
+
+.buttonDisabled img:hover {
+  filter: none;
+}
+
+.betPanel {
+  width: 70%;
+  height: 80%;
+}
+
+.betPanel img {
+  width: 100%;
+  cursor: default;
+}
+
+.betPanelContainer {
+  background: transparent url('/assets/images/playable-panel/playable-panel.png') no-repeat center;
+  background-size: contain;
+  background-position-y: top;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5% 5% 10%;
+}
+
+.autoBetTiles {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.autoBetTile {
+  width: 18%;
+  border: 1px solid vars.$neonBlue;
+  border-radius: 10px;
+}
+
+.autoBetTile span {
+  font: 80% vars.$fontName;
+  color: vars.$neonBlue;
+}
+
+.autoBetTile:hover, .selected {
+  width: 18%;
+  border: 1px solid vars.$neonBlue;
+  border-radius: 10px;
+  background-color: vars.$neonBlue;
+  cursor: pointer;
+}
+
+.autoBetTile:hover span, .selected span  {
+  font: 80% vars.$fontName;
+  color: white;
+}

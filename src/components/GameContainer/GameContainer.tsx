@@ -1,8 +1,9 @@
 import {RocketAnimated} from "../RocketAnimated/RocketAnimated";
 import {FC, useState} from "react";
 import classes from './GameContainer.module.scss';
-import startButton from "../../assets/images/start-button.png";
+import startButton from "../../assets/images/playable-panel/start-button.png";
 import BetCoefficientScale from "../BetCoefficientScale/BetCoefficientScale";
+import PlayablePanel from "../PlayablePanel/PlayablePanel";
 
 export interface GameContainerProps {
     moveBackgroundOnRocketLaunched?: (isMoving: boolean) => void;
@@ -58,12 +59,10 @@ const GameContainer : FC<GameContainerProps> = ({
                     />
                 </div>
 
-                <div className={classes.playablePanelContainer}>
-                    <img
-                        src={startButton}
-                        onClick={() => {
-                            handleStartRound();
-                        }}
+                <div className={classes.playablePanelContainerWrapper}>
+                    <PlayablePanel
+                        handleStartClick={handleStartRound}
+                        isRoundStarted={isRocketAction}
                     />
                 </div>
             </div>

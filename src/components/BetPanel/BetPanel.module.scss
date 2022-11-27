@@ -1,0 +1,7 @@
+@use 'src/styles/vars';
+
+.betBar {
+  width: 90%;
+  height: 10px !important;
+  border: 1px solid vars.$neonBlue;
+}
