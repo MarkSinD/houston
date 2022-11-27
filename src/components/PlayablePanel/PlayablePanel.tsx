@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
 import startButton from "../../assets/images/playable-panel/start-button.png";
 import stopButton from "../../assets/images/playable-panel/start-button.png";  //todo сменить на кнопку стоп
-import panel from "../../assets/images/playable-panel/playable-panel.png";
+import plusBetDisabled from "../../assets/images/playable-panel/plus-bet.png"; //todo сменить на кнопку plusBetDisabled
 import plusBet from "../../assets/images/playable-panel/plus-bet.png";
 import classes from './PlayablePanel.module.scss';
 import BetPanel from "../BetPanel/BetPanel";
@@ -30,10 +30,14 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
     };
 
     const onPlusBetClick = () => {
+        if (isStartClicked) {
+            return;
+        }
         setIsSingleBetMode(false);
     };
 
     const onAutoBetLeftTileClick = (autoBet: number) => {
+        if (isStartClicked) return;
         if (autoBet === autoBetLeft) {
             setAutoBetLeft(0);
             return;
@@ -42,6 +46,7 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
     };
 
     const onAutoBetRightTileClick = (autoBet: number) => {
+        if (isStartClicked) return;
         if (autoBet === autoBetRight) {
             setAutoBetRight(0);
             return;
@@ -52,7 +57,7 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
     const getBetTiles = (selectedAutoBet: number, isRight: boolean) => {
         const tiles = autoBets.map((autoBet, index) =>
             <div
-                className={classes.autoBetTile + ' ' + (selectedAutoBet === autoBet ? classes.selected : '')}
+                className={(isStartClicked ? classes.autoBetTileDisabled : '') + ' ' + classes.autoBetTile + ' ' + (selectedAutoBet === autoBet ? classes.selected : '')}
                 onClick={() => {
                     isRight ? onAutoBetRightTileClick(autoBet) : onAutoBetLeftTileClick(autoBet);
                 }}
@@ -70,7 +75,7 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
             { isSingleBetMode ? (
             <div className={classes.playablePanelContainer + ' ' + (isStartClicked ? classes.buttonDisabled : '')}>
                 <img
-                    src={isRoundStarted ? stopButton : startButton}
+                    src={isStartClicked ? stopButton : startButton}
                     onClick={() => {
                         onStartClick();
                     }}
@@ -88,7 +93,7 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
                     </div>
                 </div>
                 <img
-                    src={plusBet}
+                    src={isStartClicked ? plusBetDisabled : plusBet}
                     style={{width: '15%', padding: '4%'}}
                     onClick={() => {
                         onPlusBetClick();
@@ -98,7 +103,7 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
         ) : (
             <div className={classes.playablePanelContainer + ' ' + (isStartClicked ? classes.buttonDisabled : '')}>
                 <img
-                    src={isRoundStarted ? stopButton : startButton}
+                    src={isStartClicked ? stopButton : startButton}
                     onClick={() => {
                         onStartClick();
                     }}
@@ -125,7 +130,7 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
                     </div>
                 </div>
                 <img
-                    src={isRoundStarted ? stopButton : startButton}
+                    src={isStartClicked ? stopButton : startButton}
                     onClick={() => {
                         onStartClick();
                     }}

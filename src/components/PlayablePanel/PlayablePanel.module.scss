@@ -78,7 +78,7 @@
   color: vars.$neonBlue;
 }
 
-.autoBetTile:hover, .selected {
+.autoBetTile:hover {
   width: 18%;
   border: 1px solid vars.$neonBlue;
   border-radius: 10px;
@@ -86,7 +86,29 @@
   cursor: pointer;
 }
 
-.autoBetTile:hover span, .selected span  {
+.autoBetTileDisabled {
+  background: none !important;
+  cursor: default  !important;
+}
+
+.autoBetTileDisabled span {
+  color: vars.$neonBlue !important;
+}
+
+.selected {
+  width: 18%;
+  border: 1px solid vars.$neonBlue;
+  border-radius: 10px;
+  background-color: vars.$neonBlue !important;
+  cursor: pointer;
+}
+
+.selected span  {
+  font: 80% vars.$fontName;
+  color: white  !important;
+}
+
+.autoBetTile:hover span  {
   font: 80% vars.$fontName;
   color: white;
 }
