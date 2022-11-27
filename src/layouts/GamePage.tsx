@@ -3,6 +3,8 @@ import {GameSettings} from "../components/GameSettings/GameSettings";
 import {BetRoofTiles} from "../components/BetRoofTiles/BetRoofTiles";
 import GameContainer from "../components/GameContainer/GameContainer";
 import {useRef, useState} from "react";
+import TopBets from "../components/TopCoefficients/TopCoefficients";
+import LastBets from "../components/LastBets/LastBets";
 
 const GamePage = () => {
     const [isRocketLaunched, setIsRocketLaunched] = useState(false);
@@ -32,7 +34,8 @@ const GamePage = () => {
 
                     <div className='game-middle-row'>
                         <div className='game-left-column'>
-
+                            <TopBets/>
+                            <LastBets/>
                         </div>
                         <div className='game-playable-container-wrapper'>
                             <GameContainer
