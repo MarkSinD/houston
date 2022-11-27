@@ -16,8 +16,9 @@
 }
 
 .betRoofTileCursor {
-  margin-top: -5%;
-  display: none;
+  margin-top: -4%;
+  opacity: 0;
+  display: inline;
 }
 
 .betRoofTilesContainer div img {
@@ -37,5 +38,5 @@
 }
 
 .betRoofTilesContainer:hover + .betRoofTileCursor {
-  display: initial;
+  opacity: 1;
 }
