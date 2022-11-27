@@ -45,8 +45,22 @@
   padding: 3% 5% 10%;
 }
 
+.nonSingleMode {
+  flex-direction: row !important;
+  justify-content: space-between;
+}
+
+.autoBetTilesNonSingleMode {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .autoBetTiles {
-  width: 50%;
+  padding-left: 1%;
+  padding-right: 1%;
+  width: 45%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

@@ -19,19 +19,7 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
     const [isSingleBetMode, setIsSingleBetMode] = useState(true);
     const autoBets = [100, 200, 300, 400, 1000];
     const [autoBetLeft, setAutoBetLeft] = useState(0);
-
-    const tiles = autoBets.map((autoBet, index) =>
-        <div
-            className={classes.autoBetTile + ' ' + (autoBetLeft === autoBet ? classes.selected : '')}
-            onClick={() => {
-                onAutoBetTileClick(autoBet);
-            }}
-        >
-            <span>
-                {autoBet}
-            </span>
-        </div>
-    );
+    const [autoBetRight, setAutoBetRight] = useState(0);
 
     const onStartClick = () => {
         if (isStartClicked) {
@@ -45,7 +33,7 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
         setIsSingleBetMode(false);
     };
 
-    const onAutoBetTileClick = (autoBet: number) => {
+    const onAutoBetLeftTileClick = (autoBet: number) => {
         if (autoBet === autoBetLeft) {
             setAutoBetLeft(0);
             return;
@@ -53,8 +41,33 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
         setAutoBetLeft(autoBet);
     };
 
+    const onAutoBetRightTileClick = (autoBet: number) => {
+        if (autoBet === autoBetRight) {
+            setAutoBetRight(0);
+            return;
+        }
+        setAutoBetRight(autoBet);
+    };
+
+    const getBetTiles = (selectedAutoBet: number, isRight: boolean) => {
+        const tiles = autoBets.map((autoBet, index) =>
+            <div
+                className={classes.autoBetTile + ' ' + (selectedAutoBet === autoBet ? classes.selected : '')}
+                onClick={() => {
+                    isRight ? onAutoBetRightTileClick(autoBet) : onAutoBetLeftTileClick(autoBet);
+                }}
+            >
+            <span>
+                {autoBet}
+            </span>
+            </div>
+        );
+        return tiles;
+    };
+
     return (
-        <> { isSingleBetMode ? (
+        <>
+            { isSingleBetMode ? (
             <div className={classes.playablePanelContainer + ' ' + (isStartClicked ? classes.buttonDisabled : '')}>
                 <img
                     src={isRoundStarted ? stopButton : startButton}
@@ -65,11 +78,12 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
                 />
                 <div className={classes.betPanel}>
                     <div className={classes.autoBetTiles}>
-                        {tiles}
+                        {getBetTiles(autoBetLeft, false)}
                     </div>
                     <div className={classes.betPanelContainer}>
                         <BetPanel
                             autoBetValue={autoBetLeft}
+                            isSingleBetMode={isSingleBetMode}
                         />
                     </div>
                 </div>
@@ -90,10 +104,26 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
                     }}
                     style={{width: '15%'}}
                 />
-                <img
-                    src={panel}
-                    style={{width: '70%'}}
-                />
+                <div className={classes.betPanel}>
+                    <div className={classes.autoBetTilesNonSingleMode}>
+                        <div className={classes.autoBetTiles}>
+                            {getBetTiles(autoBetLeft, false)}
+                        </div>
+                        <div className={classes.autoBetTiles}>
+                            {getBetTiles(autoBetRight, true)}
+                        </div>
+                    </div>
+                    <div className={classes.betPanelContainer + ' ' + (isSingleBetMode ? '' : classes.nonSingleMode)}>
+                        <BetPanel
+                            autoBetValue={autoBetLeft}
+                            isSingleBetMode={isSingleBetMode}
+                        />
+                        <BetPanel
+                            autoBetValue={autoBetRight}
+                            isSingleBetMode={isSingleBetMode}
+                        />
+                    </div>
+                </div>
                 <img
                     src={isRoundStarted ? stopButton : startButton}
                     onClick={() => {
@@ -102,8 +132,7 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
                     style={{width: '15%'}}
                 />
             </div>
-        )
-        }
+        )}
         </>
     );
 

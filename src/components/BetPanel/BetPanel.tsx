@@ -4,10 +4,12 @@ import autoBetTile from "../../assets/images/playable-panel/auto-bet-tile.png";
 
 export interface BetPanelProps {
     autoBetValue?: number;
+    isSingleBetMode?: boolean;
 }
 
 const BetPanel : FC<BetPanelProps> = ({
-  autoBetValue = 0
+  autoBetValue = 0,
+  isSingleBetMode = true
 }) => {
 
     //betBar takes 90% of width => 5% makes us start where the bar starts
@@ -33,7 +35,7 @@ const BetPanel : FC<BetPanelProps> = ({
     };
 
     return (
-        <div className={classes.betPanelContainer}>
+        <div className={classes.betPanelContainer + ' ' + (isSingleBetMode ? '' : classes.nonSingleBetMode)}>
             <div className={classes.selectedAutoBetTile}
                  style={{opacity: autoBetValue === 0 ? 0 : 1, marginLeft: selectedAutoBetTileLeftMargin + '%'}}
             >
