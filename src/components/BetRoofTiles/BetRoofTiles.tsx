@@ -1,7 +1,8 @@
 import {FC} from "react";
-import betTileHigh from "../../assets/images/bet-roof-tile-high.png";
-import betTileMid from "../../assets/images/bet-roof-tile-mid.png";
-import betTileLow from "../../assets/images/bet-roof-tile-low.png";
+import betTileHigh from "../../assets/images/bet-roof-tiles/bet-roof-tile-high.png";
+import betTileMid from "../../assets/images/bet-roof-tiles/bet-roof-tile-mid.png";
+import betTileLow from "../../assets/images/bet-roof-tiles/bet-roof-tile-low.png";
+import betTileCursor from "../../assets/images/bet-roof-tiles/bet-roof-tile-cursor.png";
 import classes from './BetRoofTiles.module.scss';
 
 export const BetRoofTiles: FC = () => {
@@ -20,8 +21,11 @@ export const BetRoofTiles: FC = () => {
 );
 
     return (
-        <div className={classes.betRoofTilesContainer}>
-            { tiles }
-        </div>
+        <>
+            <div className={classes.betRoofTilesContainer}>
+                { tiles }
+            </div>
+            <img src={betTileCursor} className={classes.betRoofTileCursor}/>
+        </>
     );
 };
