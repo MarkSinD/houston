@@ -46,6 +46,10 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
     };
 
     const onAutoBetTileClick = (autoBet: number) => {
+        if (autoBet === autoBetLeft) {
+            setAutoBetLeft(0);
+            return;
+        }
         setAutoBetLeft(autoBet);
     };
 
