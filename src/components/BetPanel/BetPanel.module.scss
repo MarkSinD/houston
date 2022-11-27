@@ -51,6 +51,7 @@
   height: 50%;
   display: flex;
   flex-direction: row;
+  margin-top: 1%;
 }
 
 .betCheckBoxesSingleMode > div {
@@ -168,4 +169,10 @@
 
 .autoBetToggle input:checked + .slider::before {
   transform: translateX(100%);
+}
+
+.verticalLine {
+  border-left: 2px solid vars.$neonBlue;
+  height: 100% !important;
+  width: 2px !important;
 }

@@ -13,14 +13,23 @@ const BetPanel : FC<BetPanelProps> = ({
     //betBar takes 90% of width => 5% makes us start where the bar starts
     const selectedAutoBetTileLeftMargin = 5 + (autoBetValue === 0 ? 0 : (autoBetValue/10-10) * 0.9);
     const betBarValueLeftMargin = autoBetValue === 0 ? 0 : autoBetValue/10-10;
-    const [isAutobetChecked, setIsAutobetChecked] = useState(false);
+    const [isAutoBetChecked, setIsAutoBetChecked] = useState(false);
+    const [isAutoCashOutChecked, setIsAutoCashOutChecked] = useState(false);
 
     const onAutoBetChecked = () => {
-        if (isAutobetChecked) {
-            setIsAutobetChecked(false);
+        if (isAutoBetChecked) {
+            setIsAutoBetChecked(false);
             return;
         }
-        setIsAutobetChecked(true);
+        setIsAutoBetChecked(true);
+    };
+
+    const onAutoCashOutChecked = () => {
+        if (isAutoCashOutChecked) {
+            setIsAutoCashOutChecked(false);
+            return;
+        }
+        setIsAutoCashOutChecked(true);
     };
 
     return (
@@ -44,6 +53,7 @@ const BetPanel : FC<BetPanelProps> = ({
                 </div>
                 <span>max</span>
             </div>
+
             <div className={classes.betCheckBoxesSingleMode}>
                 <div className={classes.betCheckBox}>
                     <span>auto-bet</span>
@@ -52,14 +62,33 @@ const BetPanel : FC<BetPanelProps> = ({
                         <img src={autoBetTile}/>
                     </div>
                     <label className={classes.autoBetToggle}
-                           style={{backgroundColor: isAutobetChecked ? '#08d3ff' : '#003564'}}>
+                           style={{backgroundColor: isAutoBetChecked ? '#08d3ff' : '#003564'}}>
                         <input type="checkbox" onChange={onAutoBetChecked}/>
                         <span className={classes.slider}
-                              style={{backgroundColor: isAutobetChecked ? '#08d3ff' : '#003564'}}
+                              style={{backgroundColor: isAutoBetChecked ? '#08d3ff' : '#003564'}}
                         />
                         <span className={classes.labels} data-on="ON" data-off="OFF"/>
                     </label>
                 </div>
+
+                <div className={classes.verticalLine}/>
+
+                <div className={classes.betCheckBox}>
+                    <span>auto-cashout</span>
+                    <div className={classes.autoBetCheckBoxImg}>
+                        <span>{autoBetValue === 0 ? 100 : autoBetValue}</span>
+                        <img src={autoBetTile}/>
+                    </div>
+                    <label className={classes.autoBetToggle}
+                           style={{backgroundColor: isAutoCashOutChecked ? '#08d3ff' : '#003564'}}>
+                        <input type="checkbox" onChange={onAutoCashOutChecked}/>
+                        <span className={classes.slider}
+                              style={{backgroundColor: isAutoCashOutChecked ? '#08d3ff' : '#003564'}}
+                        />
+                        <span className={classes.labels} data-on="ON" data-off="OFF"/>
+                    </label>
+                </div>
+
             </div>
         </div>
     );
