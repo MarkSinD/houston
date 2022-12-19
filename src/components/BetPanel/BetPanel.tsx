@@ -80,7 +80,7 @@ const BetPanel : FC<BetPanelProps> = ({
                 <div className={classes.betCheckBox}>
                     <span>auto-cashout</span>
                     <div className={classes.autoBetCheckBoxImg}>
-                        <span>{autoBetValue === 0 ? 100 : autoBetValue}</span>
+                        <span>2.5</span>
                         <img src={autoBetTile}/>
                     </div>
                     <label className={classes.autoBetToggle}

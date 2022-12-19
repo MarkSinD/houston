@@ -13,7 +13,8 @@
 .topCoefficientsContainer > span {
   font: 100% vars.$fontName;
   color: vars.$neonBlue;
-  margin-top: 7%;
+  width: 100%;
+  margin: 7% 20% 0;
 }
 
 .topCoefficientsContainer img {

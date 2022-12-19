@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
 import startButton from "../../assets/images/playable-panel/start-button.png";
-import stopButton from "../../assets/images/playable-panel/start-button.png";  //todo сменить на кнопку стоп
-import plusBetDisabled from "../../assets/images/playable-panel/plus-bet.png"; //todo сменить на кнопку plusBetDisabled
+import stopButton from "../../assets/images/playable-panel/stop-button.png";
+import plusBetDisabled from "../../assets/images/playable-panel/plus-bet-disabled.png";
 import plusBet from "../../assets/images/playable-panel/plus-bet.png";
 import classes from './PlayablePanel.module.scss';
 import BetPanel from "../BetPanel/BetPanel";
