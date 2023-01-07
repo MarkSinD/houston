@@ -10,10 +10,6 @@ const Lobby = () => {
     const [isRocketAction, setIsRocketAction] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleRocketClick = () => {
-        setIsLoading(true);
-    };
-
     const onAnimationEnd = () => {
         if (!isRocketAction) return;
         navigate('/game');
@@ -22,35 +18,30 @@ const Lobby = () => {
     const appDiv = useRef<HTMLDivElement>(null);
 
     return (
-        <>
-            <ApplicationBackground
-                isLobby={true}
-                applicationHeight={appDiv?.current?.clientHeight}
-            >
-                    <div className='rocket-lobby-wrap' ref={appDiv}>
-                        <RocketAnimated
-                            isAction={isRocketAction}
-                            handleClick={() => {
-                                handleRocketClick()
-                            }}
-                            onAnimationEnd={() => {
-                                onAnimationEnd()
-                            }}
-                            isLobby={true}
-                            applicationHeight={appDiv?.current?.clientHeight ? appDiv?.current?.clientHeight / 0.35 : 0}
-                        />
-                    </div>
-                    <div className='progress-lobby-wrapper'>
-                        <ProgressBar
-                            isLoading={isLoading}
-                            animationTime={3}
-                            onEnd={() => {
-                                setIsRocketAction(true);
-                            }}
-                        />
-                    </div>
-            </ApplicationBackground>
-        </>
+        <ApplicationBackground isLobby={true}>
+            <div className='rocket-lobby-wrap' ref={appDiv}>
+                <RocketAnimated
+                    isAction={isRocketAction}
+                    handleClick={() => {
+                        setIsLoading(true)
+                    }}
+                    onAnimationEnd={() => {
+                        onAnimationEnd()
+                    }}
+                    isLobby={true}
+                    applicationHeight={appDiv?.current?.clientHeight ? appDiv?.current?.clientHeight / 0.35 : 0} //todo деление на 0.35 сильно увеличивает height
+                />
+            </div>
+            <div className='progress-lobby-wrapper'>
+                <ProgressBar
+                    isLoading={isLoading}
+                    animationTime={3}
+                    onEnd={() => {
+                        setIsRocketAction(true);
+                    }}
+                />
+            </div>
+        </ApplicationBackground>
     );
 };
 
