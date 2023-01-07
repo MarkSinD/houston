@@ -1,21 +1,14 @@
 import {HoustonLogo} from "../HoustonLogo/HoustonLogo";
-import {DetailedHTMLProps, FC, HTMLAttributes, useEffect} from 'react';
-import { CSSProperties } from '@material-ui/styles';
+import {FC, PropsWithChildren, useEffect} from 'react';
 import classes from './ApplicationBackground.module.scss';
 
-export interface ApplicationBackgroundProps {
-    className?: string;
-    styles?: CSSProperties;
+export interface ApplicationBackgroundProps extends PropsWithChildren {
     isLobby?: boolean;
     isRocketLaunched?: boolean;
     applicationHeight?: number;
 }
 
-export const ApplicationBackground: FC<
- ApplicationBackgroundProps &
- DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,HTMLDivElement
- >
-> = ({ children, className = '', styles = {}, isLobby = false, isRocketLaunched = false, applicationHeight = 0, ...props }) => {
+export const ApplicationBackground: FC<ApplicationBackgroundProps> = ({ isLobby = false, isRocketLaunched = false, applicationHeight = 0, children }) => {
 
     useEffect(() => {
         const root = document.documentElement;
@@ -26,27 +19,25 @@ export const ApplicationBackground: FC<
         root?.style.setProperty(
             "--slidedown-bg-height", (heightProportioned + applicationHeight) + "px"
         );
-    },);
+    }, []);
 
     return (
-        <>
-            <div >
-                { isLobby ? (
-                <div className={classes.desktopWrapper}>
-                    <div className={classes.logoMain}>
-                        <HoustonLogo/>
-                    </div>
-                    {children}
+        <div>
+            { isLobby ? (
+            <div className={classes.desktopWrapper}>
+                <div className={classes.logoMain}>
+                    <HoustonLogo/>
                 </div>
-                ) : (
-                    <>
-                        <div className={isRocketLaunched ? classes.desktopWrapper + ' ' + classes.gameActionWrapper : classes.desktopWrapper}>
-                            {children}
-                        </div>
-                        <div className={isRocketLaunched ? classes.gameActionEarthFooter : classes.earthFooter}/>
-                    </>
-                )}
+                {children}
             </div>
-        </>
+            ) : (
+                <>
+                    <div className={isRocketLaunched ? classes.desktopWrapper + ' ' + classes.gameActionWrapper : classes.desktopWrapper}>
+                        {children}
+                    </div>
+                    <div className={isRocketLaunched ? classes.gameActionEarthFooter : classes.earthFooter}/>
+                </>
+            )}
+        </div>
     );
 };

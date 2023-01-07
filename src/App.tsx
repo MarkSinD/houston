@@ -19,6 +19,7 @@ function App() {
                         <Route
                             element={<route.component/>}
                             path={route.path}
+                            key={route.path}
                         />)}
                     <Route
                         path="*"
