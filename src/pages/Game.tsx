@@ -6,7 +6,7 @@ import {useRef, useState} from "react";
 import TopBets from "../components/TopCoefficients/TopCoefficients";
 import LastBets from "../components/LastBets/LastBets";
 
-const GamePage = () => {
+const Game = () => {
     const [isRocketLaunched, setIsRocketLaunched] = useState(false);
 
     const moveBackgroundOnRocketLaunched = (isMoving: boolean) => {
@@ -56,4 +56,4 @@ const GamePage = () => {
     );
 };
 
-export default GamePage;
+export default Game;

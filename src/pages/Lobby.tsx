@@ -4,7 +4,7 @@ import {RocketAnimated} from "../components/RocketAnimated/RocketAnimated";
 import {ApplicationBackground} from "../components/ApplicationBackground/ApplicationBackground";
 import { useNavigate } from "react-router-dom";
 
-const LobbyPage = () => {
+const Lobby = () => {
     const navigate = useNavigate();
 
     const [isRocketAction, setIsRocketAction] = useState(false);
@@ -54,4 +54,4 @@ const LobbyPage = () => {
     );
 };
 
-export default LobbyPage;
+export default Lobby;

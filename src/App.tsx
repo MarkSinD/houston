@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-import LobbyPage from "./layouts/LobbyPage";
-import GamePage from "./layouts/GamePage";
 import './styles/global.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -10,14 +8,18 @@ import {
     Route,
     Navigate,
 } from "react-router-dom";
+import {routes} from "./routes";
 
 function App() {
     return (
         <div>
             <Router>
                 <Routes>
-                    <Route path='/' element={<LobbyPage/>} />
-                    <Route path='/game' element={<GamePage/>} />
+                    {routes.map(route =>
+                        <Route
+                            element={<route.component/>}
+                            path={route.path}
+                        />)}
                     <Route
                         path="*"
                         element={<Navigate to="/" replace />}
