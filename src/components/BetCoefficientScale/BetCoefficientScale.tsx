@@ -5,13 +5,12 @@ import {animated, useSpring} from "react-spring";
 
 export interface BetCoefficientScaleProps {
     isAction?:boolean;
-    applicationHeight?: number;
 }
 
 const BetCoefficientScale : FC<BetCoefficientScaleProps> = ({
   isAction = true,
-  applicationHeight= 0,
 }) => {
+    const applicationHeight = document.documentElement?.clientHeight ? document.documentElement.clientHeight : 0;
     const maxHeight = 0.7*applicationHeight;
 
     const scaleStyles = useSpring({
