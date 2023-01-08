@@ -10,17 +10,13 @@ const Game = () => {
     const [isRocketLaunched, setIsRocketLaunched] = useState(false);
     const containerDiv = useRef<HTMLDivElement>(null);
 
-    const moveBackgroundOnRocketLaunched = (isMoving: boolean) => {
-        setIsRocketLaunched(isMoving);
-    };
-
     useEffect(() => {
         const root = document.documentElement;
         const bgHeight = 6808;
         const bgWidth = 1915;
         const heightProportioned = root?.offsetWidth * bgHeight/bgWidth;
         const containerHeight = containerDiv?.current?.clientHeight ? containerDiv?.current?.clientHeight : 0;
-        root?.style.setProperty("--slidedown-bg-height", (heightProportioned + containerHeight) + "px");
+        root?.style.setProperty("--slidedown-bg-height", `${heightProportioned + containerHeight}px`);
     }, []);
 
     return(
@@ -45,7 +41,7 @@ const Game = () => {
                         <div className='game-playable-container-wrapper'>
                             <GameContainer
                                 moveBackgroundOnRocketLaunched={(isMoving: boolean) => {
-                                    moveBackgroundOnRocketLaunched(isMoving)
+                                    setIsRocketLaunched(isMoving)
                                 }}
                                 applicationHeight={containerDiv?.current?.clientHeight}
                             />

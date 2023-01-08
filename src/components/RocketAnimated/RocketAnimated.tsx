@@ -10,7 +10,6 @@ export interface RocketAnimatedProps {
     handleClick?: () => void;
     onAnimationEnd?: () => void;
     isLobby?: boolean;
-    applicationHeight?: number;
     isRocketExplosion?: boolean;
 }
 
@@ -19,9 +18,10 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
   handleClick = () => {},
   onAnimationEnd = () => {},
   isLobby = false,
-  applicationHeight= 0,
   isRocketExplosion = false
 }) => {
+
+    const applicationHeight = document.documentElement?.clientHeight ? document.documentElement.clientHeight : 0;
 
     const [isSurfing, setIsSurfing] = useState(false);
 
@@ -33,22 +33,22 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
         setIsSurfing(true);
     };
 
-    //isLobby ? calculates height enough for rocket to leave the screen considering rocket div is 30% from the bottom
+    //isLobby ? applicationHeight should be enough for rocket to leave the screen considering rocket div is 30% from the bottom
     //else ? calculates height enough for rocket to stay inside game container knowing rocket has 50% of container space above it
-    const rocketMaxHeightOnScreen = isLobby ? applicationHeight - 0.3*applicationHeight + 100 : 0.35*applicationHeight;
+    const rocketMaxHeightOnScreen = isLobby ? applicationHeight : 0.35*applicationHeight;
     //calculates how low will rocket get before takeoff
     const rocketPrepareForTakeoffHeight = 0.05*applicationHeight;
 
     const rocketSurfStyles = useSpring({
-        from: {transform:  `${'translateY(' + (isSurfing ? rocketPrepareForTakeoffHeight + 'px' : '0px') + ')'}`},
-        to: {transform:  `${'translateY(' + (isSurfing ? '-' + rocketMaxHeightOnScreen + 'px' : (isAction ? rocketPrepareForTakeoffHeight + 'px' : '0px')) + ')'}`},
+        from: {transform:  `translateY(${isSurfing ? rocketPrepareForTakeoffHeight + 'px' : '0px'})`},
+        to: {transform:  `translateY(${isSurfing ? '-' + rocketMaxHeightOnScreen + 'px' : (isAction ? rocketPrepareForTakeoffHeight + 'px' : '0px')})`},
         config: {mass: 6, duration: 1000},
         onRest: () => { onLaunchEnd() }
     })
 
     const startExplosionStyles = useSpring({
         from: {opacity: 0, transform: "translateY(0px)"},
-        to: [{opacity: isAction && !isSurfing ? 1 : 0, transform: `${'translateY(' + (isAction ? '50px' : '0px') + ')'}`},
+        to: [{opacity: isAction && !isSurfing ? 1 : 0, transform: `translateY(${isAction ? '50px' : '0px'})`},
             {opacity: 0}],
         config: {mass: 6, duration: 100},
     })
@@ -63,9 +63,7 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
         <div className={classes.rocketContainer}>
             { !isLobby ? (
                 <animated.div className={classes.endExplosion} style={ endExplosionStyles }>
-                    <img
-                        src={endExplosion}
-                    />
+                    <img src={endExplosion} alt=''/>
                 </animated.div>
             ) : null
             }
@@ -80,13 +78,10 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
 
             { !isLobby ? (
                 <animated.div className={classes.startExplosion} style={{...startExplosionStyles}}>
-                    <img
-                        src={startExplosion}
-                    />
+                    <img src={startExplosion} alt=''/>
                 </animated.div>
             ) : null
             }
         </div>
-
     );
 };

@@ -50,7 +50,6 @@ const GameContainer : FC<GameContainerProps> = ({
 
                 <div className={classes.rocketGame}>
                     <RocketAnimated
-                        applicationHeight={applicationHeight}
                         isAction={isRocketAction}
                         onAnimationEnd={() => {
                             handleRocketFlightDuration()
