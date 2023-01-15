@@ -1,7 +1,8 @@
 import {FC, useState} from "react";
-import rocket from "../../assets/images/rocket.png";
-import startExplosion from "../../assets/gifs/start-explosion.gif";
-import endExplosion from "../../assets/gifs/end-explosion.gif";
+import rocket from "../../assets/images/rocket-animated/rocket.png";
+import startExplosion from "../../assets/images/rocket-animated/start-explosion.svg";
+import endExplosion from "../../assets/images/rocket-animated/explosion.svg";
+import weHaveAProblem from "../../assets/images/rocket-animated/we-have-a-problem.svg";
 import { useSpring, animated } from 'react-spring'
 import classes from './RocketAnimated.module.scss';
 
@@ -35,7 +36,7 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
 
     //isLobby ? applicationHeight should be enough for rocket to leave the screen considering rocket div is 30% from the bottom
     //else ? calculates height enough for rocket to stay inside game container knowing rocket has 50% of container space above it
-    const rocketMaxHeightOnScreen = isLobby ? applicationHeight : 0.35*applicationHeight;
+    const rocketMaxHeightOnScreen = isLobby ? applicationHeight : 0.2*applicationHeight;
     //calculates how low will rocket get before takeoff
     const rocketPrepareForTakeoffHeight = 0.05*applicationHeight;
 
@@ -50,21 +51,32 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
         from: {opacity: 0, transform: "translateY(0px)"},
         to: [{opacity: isAction && !isSurfing ? 1 : 0, transform: `translateY(${isAction ? '50px' : '0px'})`},
             {opacity: 0}],
-        config: {mass: 6, duration: 100},
+        config: {mass: 6, duration: 400},
     })
 
     const endExplosionStyles = useSpring({
         from: {opacity: 0},
         to: [{opacity: isRocketExplosion ? 1 : 0}, {opacity: 0}],
-        config: {mass: 6, duration: 500},
+        config: {mass: 6, duration: 1000},
     })
 
     return (
         <div className={classes.rocketContainer}>
             { !isLobby ? (
-                <animated.div className={classes.endExplosion} style={ endExplosionStyles }>
-                    <img src={endExplosion} alt=''/>
-                </animated.div>
+                <>
+                    <animated.div className={classes.weHaveAProblem} style={ endExplosionStyles }>
+                        <img src={weHaveAProblem} alt=''/>
+                    </animated.div>
+                    <animated.div className={classes.endExplosion} style={ endExplosionStyles }>
+                        <img src={endExplosion} alt=''/>
+                    </animated.div>
+                    <animated.div className={classes.endExplosion + ' ' + classes.endExplosionRight} style={ endExplosionStyles }>
+                        <img src={endExplosion} alt=''/>
+                    </animated.div>
+                    <animated.div className={classes.endExplosion + ' ' + classes.endExplosionLeft} style={ endExplosionStyles }>
+                        <img src={endExplosion} alt=''/>
+                    </animated.div>
+                </>
             ) : null
             }
 
@@ -77,7 +89,7 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
             </animated.div>
 
             { !isLobby ? (
-                <animated.div className={classes.startExplosion} style={{...startExplosionStyles}}>
+                <animated.div className={classes.startExplosion} style={ startExplosionStyles }>
                     <img src={startExplosion} alt=''/>
                 </animated.div>
             ) : null
