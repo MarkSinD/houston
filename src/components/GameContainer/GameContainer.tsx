@@ -1,28 +1,39 @@
 import {RocketAnimated} from "../RocketAnimated/RocketAnimated";
-import {FC, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import classes from './GameContainer.module.scss';
 import BetCoefficientScale from "../BetCoefficientScale/BetCoefficientScale";
 import PlayablePanel from "../PlayablePanel/PlayablePanel";
 import Countdown from "../Countdown/Countdown";
 
 export interface GameContainerProps {
-    moveBackgroundOnRocketLaunched?: (isMoving: boolean) => void;
+    handleBackgroundAnimation?: (backgroundMovingTime: number) => void;
 }
 
 const GameContainer : FC<GameContainerProps> = ({
-  moveBackgroundOnRocketLaunched = () => {},
+  handleBackgroundAnimation = () => {},
 }) => {
     const [isCountdown, setIsCountdown] = useState(false);
     const [isRocketAction, setIsRocketAction] = useState(false);
     const [isRocketExplosion, setIsRocketExplosion] = useState(false);
+    const [flightDuration, setFlightDuration] = useState(0);
+
+    // todo сколько секунд будет лететь ракета:
+    useEffect(() => {
+        setFlightDuration(5);
+    }, [flightDuration]);
 
     const handleRocketFlightDuration = () => {
         if (!isRocketAction) return;
-        // todo сколько секунд будет лететь ракета:
-        const durationSeconds = 5;
+        handleBackgroundAnimation(flightDuration);
         setTimeout(() => {
             setIsRocketExplosion(true);
-        }, durationSeconds * 1000)
+            setTimeout(() => {
+                setIsRocketExplosion(false);
+                setIsRocketAction(false);
+                setFlightDuration(0);
+                handleBackgroundAnimation(0);
+            }, 3000); //3s to darken ApplicationBackground
+        }, flightDuration * 1000)
     }
 
     return(
@@ -31,7 +42,6 @@ const GameContainer : FC<GameContainerProps> = ({
                 <Countdown
                     callback={() => {
                         setIsRocketAction(true);
-                        moveBackgroundOnRocketLaunched(true);
                         setIsCountdown(false);
                     }}
                     isStarted={isCountdown}
@@ -39,8 +49,8 @@ const GameContainer : FC<GameContainerProps> = ({
 
                 <div className={classes.rocketGame}>
                     <RocketAnimated
-                        isAction={isRocketAction}
-                        onAnimationEnd={() => {
+                        isAction={isRocketAction && !isRocketExplosion}
+                        onLaunchAnimationEnd={() => {
                             handleRocketFlightDuration()
                         }}
                         isRocketExplosion={isRocketExplosion}

@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import rocket from "../../assets/images/rocket-animated/rocket.png";
 import startExplosion from "../../assets/images/rocket-animated/start-explosion.svg";
 import endExplosion from "../../assets/images/rocket-animated/explosion.svg";
@@ -9,7 +9,7 @@ import classes from './RocketAnimated.module.scss';
 export interface RocketAnimatedProps {
     isAction?: boolean;
     handleClick?: () => void;
-    onAnimationEnd?: () => void;
+    onLaunchAnimationEnd?: () => void;
     isLobby?: boolean;
     isRocketExplosion?: boolean;
 }
@@ -17,7 +17,7 @@ export interface RocketAnimatedProps {
 export const RocketAnimated: FC<RocketAnimatedProps> = ({
   isAction= false,
   handleClick = () => {},
-  onAnimationEnd = () => {},
+  onLaunchAnimationEnd = () => {},
   isLobby = false,
   isRocketExplosion = false
 }) => {
@@ -26,12 +26,20 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
 
     const [isSurfing, setIsSurfing] = useState(false);
 
+    useEffect(() => {
+        if (isRocketExplosion) {
+            setIsSurfing(false);
+        }
+    }, [isRocketExplosion, isSurfing]);
+
     const onLaunchEnd = () => {
         if (isSurfing) {
-            onAnimationEnd();
+            onLaunchAnimationEnd();
             return;
         }
-        setIsSurfing(true);
+        if (isAction) {
+            setIsSurfing(true);
+        }
     };
 
     //isLobby ? applicationHeight should be enough for rocket to leave the screen considering rocket div is 30% from the bottom
@@ -80,7 +88,7 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
             ) : null
             }
 
-            <animated.div className={classes.rocketMain} style={ rocketSurfStyles }>
+            <animated.div className={isRocketExplosion ? classes.rocketMain + ' ' + classes.transparent : classes.rocketMain} style={ rocketSurfStyles }>
                 <img
                     src={rocket}
                     alt='HeyHouston Rocket'

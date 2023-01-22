@@ -7,7 +7,7 @@ import TopBets from "../components/TopCoefficients/TopCoefficients";
 import LastBets from "../components/LastBets/LastBets";
 
 const Game = () => {
-    const [isRocketLaunched, setIsRocketLaunched] = useState(false);
+    const [backgroundMovingTime, setBackgroundMovingTime] = useState(0);
 
     useEffect(() => {
         const root = document.documentElement;
@@ -20,7 +20,7 @@ const Game = () => {
 
     return(
         <>
-            <ApplicationBackground isRocketLaunched={isRocketLaunched}>
+            <ApplicationBackground backgroundMovingTime={backgroundMovingTime}>
                 <div className='game-wrapper'>
 
                     <div className='game-roof-row'>
@@ -39,8 +39,8 @@ const Game = () => {
                         </div>
                         <div className='game-playable-container-wrapper'>
                             <GameContainer
-                                moveBackgroundOnRocketLaunched={(isMoving: boolean) => {
-                                    setIsRocketLaunched(isMoving)
+                                handleBackgroundAnimation={(backgroundMovingTime: number) => {
+                                    setBackgroundMovingTime(backgroundMovingTime ? backgroundMovingTime : 0);
                                 }}
                             />
                         </div>

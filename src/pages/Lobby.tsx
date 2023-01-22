@@ -22,7 +22,7 @@ const Lobby = () => {
                     handleClick={() => {
                         setIsLoading(true)
                     }}
-                    onAnimationEnd={() => {
+                    onLaunchAnimationEnd={() => {
                         onAnimationEnd()
                     }}
                     isLobby={true}

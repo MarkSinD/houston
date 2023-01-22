@@ -1,17 +1,46 @@
 import {HoustonLogo} from "../HoustonLogo/HoustonLogo";
-import {FC, PropsWithChildren} from 'react';
+import {FC, PropsWithChildren, useEffect, useState} from 'react';
 import classes from './ApplicationBackground.module.scss';
 
 export interface ApplicationBackgroundProps extends PropsWithChildren {
     isLobby?: boolean;
-    isRocketLaunched?: boolean;
+    backgroundMovingTime?: number; //seconds
 }
 
 export const ApplicationBackground: FC<ApplicationBackgroundProps> = ({
   isLobby = false,
-  isRocketLaunched = false,
+  backgroundMovingTime = 0,
   children,
   }) => {
+    const [isBackgroundMoving, setIsBackgroundMoving] = useState(false);
+    const [dynamicBgClasses, setDynamicBgClasses] = useState([classes.desktopWrapper]);
+
+    const addDynamicClass = (newClass: string) => {
+        if (dynamicBgClasses.indexOf(newClass) === -1) {
+            setDynamicBgClasses([...dynamicBgClasses, newClass])
+        }
+    }
+
+    useEffect(() => {
+        if (isLobby || !backgroundMovingTime) {
+            setDynamicBgClasses([classes.desktopWrapper]);
+            setIsBackgroundMoving(false);
+            return;
+        }
+        const isMoving = !!backgroundMovingTime;
+        if (isMoving) {
+            addDynamicClass(classes.gameActionWrapper);
+        }
+        setIsBackgroundMoving(isMoving);
+        setTimeout(() => {
+            addDynamicClass(classes.gameActionWrapper);
+            addDynamicClass(classes.gameActionEndWrapper);
+            setTimeout(() => {
+                setIsBackgroundMoving(false);
+            },  3000); //3s to darken bg
+        },  backgroundMovingTime * 1000);
+    }, [backgroundMovingTime, isBackgroundMoving]);
+
 
     return (
         <div>
@@ -24,10 +53,10 @@ export const ApplicationBackground: FC<ApplicationBackgroundProps> = ({
             </div>
             ) : (
                 <>
-                    <div className={isRocketLaunched ? classes.desktopWrapper + ' ' + classes.gameActionWrapper : classes.desktopWrapper}>
+                    <div className={dynamicBgClasses.join(' ')}>
                         {children}
                     </div>
-                    <div className={isRocketLaunched ? classes.gameActionEarthFooter : classes.earthFooter}/>
+                    <div className={isBackgroundMoving ? classes.gameActionEarthFooter : classes.earthFooter}/>
                 </>
             )}
         </div>

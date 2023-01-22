@@ -14,9 +14,17 @@
     animation: slideDown 10s infinite linear;
 }
 
+.gameActionEndWrapper {
+    animation: slideDown 10s infinite linear, darken 3s ease-in-out;
+}
+
 @keyframes slideDown {
     0% { background-position-y: bottom; }
     100% { background-position-y: var(--slidedown-bg-height); }
+}
+
+@keyframes darken {
+    100% { background-color: black; background-blend-mode: darken, luminosity; }
 }
 
 .logoMain {
@@ -37,6 +45,7 @@
     background-size: contain;
     position: fixed;
     z-index: 1;
+    animation: none;
 }
 
 .gameActionEarthFooter {
