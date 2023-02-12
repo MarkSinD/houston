@@ -19,8 +19,18 @@ const GameContainer : FC<GameContainerProps> = ({
 
     // todo сколько секунд будет лететь ракета:
     useEffect(() => {
-        setFlightDuration(5);
-    }, [flightDuration]);
+        if (flightDuration) return;
+        const min = 1;
+        const max = 100;
+        let durationSeconds;
+        const rand = min + Math.random() * (max - min);
+        if (rand<50)
+            durationSeconds = 1 + Math.random();
+        else
+            durationSeconds = 1 + Math.random() * 100;
+        console.log(durationSeconds);
+        setFlightDuration(durationSeconds);
+    }, );
 
     const handleRocketFlightDuration = () => {
         if (!isRocketAction) return;
