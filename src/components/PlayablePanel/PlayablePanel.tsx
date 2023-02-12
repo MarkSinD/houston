@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import startButton from "../../assets/images/playable-panel/start-button.png";
 import stopButton from "../../assets/images/playable-panel/stop-button.png";
 import plusBetDisabled from "../../assets/images/playable-panel/plus-bet-disabled.png";
@@ -20,6 +20,11 @@ const PlayablePanel : FC<PlayablePanelProps> = ({
     const autoBets = [100, 200, 300, 400, 1000];
     const [autoBetLeft, setAutoBetLeft] = useState(0);
     const [autoBetRight, setAutoBetRight] = useState(0);
+
+    useEffect(() => {
+        if (isRoundStarted) return;
+        setIsStartClicked(false);
+    }, [isRoundStarted]);
 
     const onStartClick = () => {
         if (isStartClicked) {

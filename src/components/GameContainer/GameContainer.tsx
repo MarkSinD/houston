@@ -14,6 +14,7 @@ const GameContainer : FC<GameContainerProps> = ({
 }) => {
     const [isCountdown, setIsCountdown] = useState(false);
     const [isRocketAction, setIsRocketAction] = useState(false);
+    const [isRocketLaunched, setIsRocketLaunched] = useState(false);
     const [isRocketExplosion, setIsRocketExplosion] = useState(false);
     const [flightDuration, setFlightDuration] = useState(0);
 
@@ -35,9 +36,11 @@ const GameContainer : FC<GameContainerProps> = ({
     const handleRocketFlightDuration = () => {
         if (!isRocketAction) return;
         handleBackgroundAnimation(flightDuration);
+        setIsRocketLaunched(true);
         setTimeout(() => {
             setIsRocketExplosion(true);
             setTimeout(() => {
+                setIsRocketLaunched(false);
                 setIsRocketExplosion(false);
                 setIsRocketAction(false);
                 setFlightDuration(0);
@@ -77,7 +80,8 @@ const GameContainer : FC<GameContainerProps> = ({
 
             <div className={classes.gameCoefficientScale}>
                 <BetCoefficientScale
-                    isAction={isRocketAction}
+                    isAction={isRocketLaunched}
+                    coefficient={flightDuration}
                 />
             </div>
         </>
