@@ -45,6 +45,9 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
   console.log('isRocketExplosion: ', isRocketExplosion)
 
   useEffect(() => {
+    if (!isAction) {
+      stopFlyingSound()
+    }
     if (isSurfing) {
       playFlyingSound()
       stopExplodeSound()
