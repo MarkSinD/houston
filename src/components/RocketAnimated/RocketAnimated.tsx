@@ -31,7 +31,8 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
   const [playStartSound, { stop: stopStartSound }] = useSound(startSound)
   const [playStartExplode, { stop: stopExplodeSound }] = useSound(explodeSound)
   const [playFlyingSound, { stop: stopFlyingSound }] = useSound(flyingSound, {
-    loop: true
+    loop: !isLobby,
+    playbackRate: !isLobby ? 1 : 3
   })
 
   const applicationHeight =
@@ -43,11 +44,17 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
   console.log('isSurfing: ', isSurfing)
   console.log('isAction: ', isAction)
   console.log('isRocketExplosion: ', isRocketExplosion)
+  console.log('isLobby: ', isLobby)
 
   useEffect(() => {
-    if (!isAction) {
+    return () => {
+      stopStartSound()
+      stopExplodeSound()
       stopFlyingSound()
     }
+  }, [])
+
+  useEffect(() => {
     if (isSurfing) {
       playFlyingSound()
       stopExplodeSound()
@@ -62,7 +69,7 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
       stopStartSound()
       playStartExplode()
     }
-  }, [isRocketExplosion, isSurfing, isLobby, isAction])
+  }, [isRocketExplosion, isSurfing, isAction])
 
   const onLaunchEnd = () => {
     if (isSurfing) {
