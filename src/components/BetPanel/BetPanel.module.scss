@@ -129,7 +129,7 @@
   width: 20%;
   height: auto;
   min-height: 50%;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   cursor: pointer;
   text-align: center;
@@ -185,11 +185,11 @@
   transition: all 0.4s ease-in-out;
 }
 
-.autoBetToggle input:checked~.labels::after {
+.autoBetToggle input:checked ~ .labels::after {
   opacity: 0;
 }
 
-.autoBetToggle input:checked~.labels::before {
+.autoBetToggle input:checked ~ .labels::before {
   opacity: 1;
 }
 
@@ -202,7 +202,7 @@
   height: 100%;
   border-radius: 50%;
   background-color: white;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: all 0.4s ease-in-out;
 }
 
