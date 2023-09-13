@@ -1,19 +1,16 @@
-import React from 'react'
-import { type FC, type PropsWithChildren, useEffect, useState } from 'react'
+import React, { type FC, type PropsWithChildren, useEffect, useState } from 'react'
 
 import { HoustonLogo } from '../HoustonLogo/HoustonLogo'
 import classes from './ApplicationBackground.module.scss'
 
-export interface ApplicationBackgroundProps extends PropsWithChildren {
+export interface ApplicationBackgroundProps {
   isLobby?: boolean
   backgroundMovingTime?: number // seconds
 }
 
-export const ApplicationBackground: FC<ApplicationBackgroundProps> = ({
-  isLobby = false,
-  backgroundMovingTime = 0,
-  children
-}) => {
+export const ApplicationBackground: FC<
+  PropsWithChildren<ApplicationBackgroundProps>
+> = ({ isLobby = false, backgroundMovingTime = 0, children }) => {
   const [isBackgroundMoving, setIsBackgroundMoving] = useState(false)
 
   const [dynamicBgClasses, setDynamicBgClasses] = useState([classes.desktopWrapper])

@@ -24,6 +24,4 @@ export const securityApi = createApi({
   })
 })
 
-console.log('typeof securityApi: ', typeof securityApi)
-
 export const { useLogoutMutation, useLoginMutation } = securityApi

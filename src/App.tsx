@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'

@@ -6,12 +6,12 @@ import { useHover } from './useHover'
 
 interface Props {
   children: ReactNode
-  key: string
+  autoBet: string
   className?: any
   onClick?: () => void
 }
 
-export const HoverComponent = ({ children, key, className, onClick }: Props) => {
+export const HoverComponent = ({ children, autoBet, className, onClick }: Props) => {
   const { hoverOver, hoverLeave, hoverStyles } = useHover()
   let style = classes.hoverComponent
   if (className) {
@@ -21,7 +21,7 @@ export const HoverComponent = ({ children, key, className, onClick }: Props) => 
     <animated.div
       onMouseOver={hoverOver}
       onMouseLeave={hoverLeave}
-      key={key}
+      key={autoBet}
       className={style}
       style={hoverStyles}
       onClick={onClick}>

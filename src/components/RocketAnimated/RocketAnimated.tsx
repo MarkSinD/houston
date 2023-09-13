@@ -41,10 +41,6 @@ export const RocketAnimated: FC<RocketAnimatedProps> = ({
       : 0
 
   const [isSurfing, setIsSurfing] = useState(false)
-  console.log('isSurfing: ', isSurfing)
-  console.log('isAction: ', isAction)
-  console.log('isRocketExplosion: ', isRocketExplosion)
-  console.log('isLobby: ', isLobby)
 
   useEffect(() => {
     return () => {

@@ -24,7 +24,9 @@ const PlayablePanel: FC<PlayablePanelProps> = ({
   const [autoBetRight, setAutoBetRight] = useState(0)
 
   useEffect(() => {
-    if (isRoundStarted) return
+    if (isRoundStarted) {
+      return
+    }
     setIsStartClicked(false)
   }, [isRoundStarted])
 
@@ -44,7 +46,9 @@ const PlayablePanel: FC<PlayablePanelProps> = ({
   }
 
   const onAutoBetLeftTileClick = (autoBet: number) => {
-    if (isStartClicked) return
+    if (isStartClicked) {
+      return
+    }
     if (autoBet === autoBetLeft) {
       setAutoBetLeft(0)
       return
@@ -53,7 +57,9 @@ const PlayablePanel: FC<PlayablePanelProps> = ({
   }
 
   const onAutoBetRightTileClick = (autoBet: number) => {
-    if (isStartClicked) return
+    if (isStartClicked) {
+      return
+    }
     if (autoBet === autoBetRight) {
       setAutoBetRight(0)
       return
@@ -62,9 +68,10 @@ const PlayablePanel: FC<PlayablePanelProps> = ({
   }
 
   const getBetTiles = (selectedAutoBet: number, isRight: boolean) => {
-    return autoBets.map((autoBet) => (
+    return autoBets.map((autoBet, index) => (
       <HoverComponent
-        key={String(autoBet)}
+        key={index}
+        autoBet={String(autoBet)}
         className={
           (isStartClicked ? classes.autoBetTileDisabled : '') +
           ' ' +
