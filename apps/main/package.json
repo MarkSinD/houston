@@ -1,0 +1,60 @@
+{
+  "name": "@monorepo-example/main",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@microsoft/signalr": "^7.0.11",
+    "@reduxjs/toolkit": "1.9.7",
+    "lint": "0.7.0",
+    "react": "17.0.2",
+    "react-countup": "6.4.2",
+    "react-dom": "17.0.2",
+    "react-redux": "8.0.5",
+    "react-router-dom": "6.4.3",
+    "react-spring": "8.0.27",
+    "redux": "4.2.1",
+    "sass": "1.49.9",
+    "typescript": "*",
+    "use-sound": "4.0.1"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "jest",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "format:eslint": "npm run lint:eslint -- --fix",
+    "format:prettier": "npm run lint:prettier -- --write",
+    "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:ts",
+    "lint:eslint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint:prettier": "prettier \"**/*.{json,js,ts,tsx}\" --check",
+    "lint:ts": "tsc --noEmit",
+    "clean": "rimraf .turbo dist node_modules",
+    "debug:jest": "jest --showConfig",
+    "debug:eslint": "eslint --print-config \"./src/index.tsx\" > eslint-output-config-check-air.json",
+    "debug:prettier": "prettier \"./src/index.tsx\" --loglevel debug",
+    "debug:ts": "tsc --showConfig"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@monorepo-example/jest-config": "*",
+    "@monorepo-example/eslint-config": "*",
+    "@monorepo-example/tsconfig": "*",
+    "@monorepo-example/ui": "*",
+    "@types/react": "18.0.0",
+    "@types/react-dom": "18.0.0",
+    "@vitejs/plugin-react": "4.0.1",
+    "vite": "4.3.9",
+    "vite-tsconfig-paths": "4.2.0"
+  }
+}
