@@ -1,7 +1,7 @@
-import { Game } from '$pages/Game'
-import { Lobby } from '$pages/Lobby'
+import {LobbyPage} from "$desktop/pages/Lobby/LobbyPage";
+import {GamePage} from "$desktop/pages/Game/GamePage";
 
 export const routes = [
-	{ path: '/', component: Lobby },
-	{ path: '/game', component: Game },
+  {path: '/', component: LobbyPage},
+  {path: '/game', component: GamePage},
 ]

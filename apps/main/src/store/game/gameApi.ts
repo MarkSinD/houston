@@ -13,6 +13,11 @@ export const gameApi = createApi({
 				url: `/posts`,
 			}),
 		}),
+		start: builder.query<PostDTO[], null>({
+			query: () => ({
+				url: `/posts`,
+			}),
+		}),
 	}),
 })
 

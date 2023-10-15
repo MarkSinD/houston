@@ -21,13 +21,13 @@
     "@mantine/core": "6.0.15",
     "@mantine/hooks": "6.0.15",
     "@mui/material": "^5.14.12",
-    "@mui/styled-engine-sc": "^5.14.12",
+    "@mui/styled-engine-sc": "5.14.12",
     "react": "17.0.2",
     "react-countup": "6.4.2",
     "react-dom": "17.0.2",
     "react-spring": "8.0.27",
     "sass": "1.69.0",
-    "styled-components": "^5.3.11",
+    "styled-components": "5.3.11",
     "use-sound": "4.0.1"
   },
   "devDependencies": {

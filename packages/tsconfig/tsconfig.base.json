@@ -3,7 +3,7 @@
 		/* Language and Environment */
 		"target": "esnext",
 		"lib": ["dom", "dom.iterable", "esnext"],
-		"jsx": "react",
+		"jsx": "react-jsx",
 		"moduleDetection": "auto",
 
 		/* Modules */

@@ -1,4 +1,4 @@
-import React, { type FC, type PropsWithChildren, useEffect, useState } from 'react'
+import  { type FC, type PropsWithChildren, useEffect, useState } from 'react'
 
 import { HoustonLogo } from '$atoms/HoustonLogo/HoustonLogo'
 

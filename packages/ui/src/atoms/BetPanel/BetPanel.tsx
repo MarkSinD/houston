@@ -1,4 +1,4 @@
-import React, { type FC, useState } from 'react'
+import  { type FC, useState } from 'react'
 import autoBetTile from '@monorepo-example/resource/images/playable-panel/auto-bet-tile.png'
 
 import classes from './BetPanel.module.scss'

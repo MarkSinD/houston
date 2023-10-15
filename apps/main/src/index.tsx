@@ -1,12 +1,12 @@
-import React, { StrictMode } from 'react'
+import  { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './App'
+import {AppContainer} from '$AppContainer'
 import './index.css'
 
 ReactDOM.render(
 	<StrictMode>
-		<App />
+		<AppContainer />
 	</StrictMode>,
 	document.querySelector('#root') as HTMLElement
 )

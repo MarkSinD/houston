@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react'
+import  { type ReactNode } from 'react'
 import { animated } from 'react-spring'
 
 import classes from './HoverComponent.module.scss'
