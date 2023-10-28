@@ -1,0 +1,6 @@
+export {BottomLeft} from './BottomLeft/BottomLeft'
+export {BottomRight} from './BottomRight/BottomRight'
+export {LeftButton} from './LeftButton/LeftButton'
+export {RightButton} from './RightButton/RightButton'
+export {TopLeft} from './TopLeft'
+export {TopRight} from './TopRight'

@@ -13,11 +13,6 @@ export default function socketMiddleware(socket: SocketClient) {
     const {dispatch} = params
     const {type, payload} = action
 
-    console.group('socketMiddleware')
-    console.log('payload:', payload)
-    console.log('type:', type)
-    console.groupEnd()
-
     switch (type) {
       case 'control/connect': {
         dispatch(setLoading())

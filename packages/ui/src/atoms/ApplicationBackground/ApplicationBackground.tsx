@@ -42,7 +42,7 @@ export const ApplicationBackground: FC<PropsWithChildren<ApplicationBackgroundPr
 				setIsBackgroundMoving(false)
 			}, 3000) // 3s to darken bg
 		}, backgroundMovingTime * 1000)
-	}, [backgroundMovingTime, isBackgroundMoving])
+	}, [addDynamicClass, backgroundMovingTime, isBackgroundMoving, isLobby])
 
 	return (
 		<div>

@@ -1,7 +1,18 @@
-import {memo} from 'react'
-import {Stub} from "$mobile/pages/Stub";
+import { memo } from "react";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 
-export const App = memo(() => (
-  <Stub/>))
+import { routes } from "mobile/routes";
 
-App.displayName = 'App'
+export const App = memo(() => {
+  return (
+    <Router>
+      <Routes>
+        {routes.map(route => (
+          <Route key={route.path} element={<route.component />} path={route.path} />
+        ))}
+        <Route element={<Navigate to="/" replace />} path="*" />
+      </Routes>
+    </Router>);
+});
+
+App.displayName = "App";

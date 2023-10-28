@@ -152,7 +152,7 @@ export const RocketAnimated = memo(({
         }
         style={rocketSurfStyles}
       >
-        <Box sx={{height: '200px'}} component="img" alt="HeyHouston Rocket" src={rocket} onClick={handleClick}/>
+        <Box alt="HeyHouston Rocket" component="img" src={rocket} sx={{height: '200px'}} onClick={handleClick}/>
       </animated.div>
 
       {isAction ? (

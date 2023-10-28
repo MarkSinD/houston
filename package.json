@@ -10,9 +10,9 @@
 	],
 	"scripts": {
 		"build": "npx turbo run build --no-daemon",
-		"build:main": "turbo run build --filter ./apps/game --no-daemon",
+		"build:main": "turbo run build --filter ./apps/main --no-daemon",
 		"dev": "turbo run dev --no-daemon",
-		"dev:main": "turbo run dev --filter ./apps/game --no-daemon",
+		"dev:main": "turbo run dev --filter ./apps/main --no-daemon",
 		"test": "turbo run test",
 		"format": "turbo run format --no-daemon",
 		"format:eslint": "turbo run format:eslint --no-daemon",
